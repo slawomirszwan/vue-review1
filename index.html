@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
+  <link rel="stylesheet" href="index.css">
+
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+  <div id="app">
+    <p>{{ message }}</p>  
+                           
+    <p>{{ message2 }}</p> 
+    <p v-text="message2"></p>
+    <p v-html="message2"></p>
+      <span v-bind:title="message2">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+
+
+    <span v-if="seen">Now you see me</span>
+
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+
+
+
+
+    <div>
+      <p>{{ message }}</p>
+      <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+
+    <hr>
+    <p>{{ message }}</p>
+    <input v-model="message">
+    <hr>
+
+
+  </div>
+
+  <hr>
+  <hr>
+
+<div id="app2">
+  <show-list v-bind:list="groceryList"></show-list>
+  <hr>
+  <show-list v-bind:list="flowerList"></show-list>
+</div>
+
+<style>
+  .container {
+    border: 1px solid red;
+  }
+  .removed span {
+    background-color: darkgray;
+    text-decoration: line-through;
+  }
+</style>
+
+  <div id="app3" class="container">
+    <h2>{{ title }}</h2>
+    <ul>
+      <li v-for="item in items" v-bind:class="{'removed':item.checked}">
+        <label>
+          <input type="checkbox" v-model="item.checked">
+          <span v-text="item.text"></span>
+        </label>
+      </li>
+    </ul>
+    <Display></Display>
+
+    <hr/>
+    <em>Zmień nazwę listy zakupów</em>
+    <input v-model="title"/>
+    <Inputfield :label="labelName"></Inputfield>
+    <hr>
+    <Pomodoro></Pomodoro>
+    <hr>
+    <p>Zmiana listy zakupów na strukturę komponentów</p>
+    <Listazakupow></Listazakupow>
+    <hr>
+    <test-direcite-square></test-direcite-square>
+    <hr>
+    ssssssssssssssss
+    <hr>
+    <Skills></Skills>
+  </div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="app3.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+:root {
+	font: 1rem/1.175 "BlinkMacSystemFont", -apple-system, "Roboto", sans-seri;
+}
+
+ html, body {
+    margin: 5px;
+    padding: 0;
+}

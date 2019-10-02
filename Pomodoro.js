@@ -1,0 +1,109 @@
+const POMODORO_STATES = {
+    WORK: 'work',
+    REST: 'rest'
+};
+
+const STATES = {
+    STARTED: 'started',
+    STOPPED: 'stopped',
+    PAUSED: 'paused'
+};
+
+const WORKING_TIME_LENGTH_IN_MINUTES = 2;
+const RESTING_TIME_LENGTH_IN_MINUTES = 1;
+
+var Pomodoro = {
+    data: function() {
+        return {
+            state: STATES.STOPPED,
+            minute: WORKING_TIME_LENGTH_IN_MINUTES,
+            second: 0,
+            pomodoroState: POMODORO_STATES.WORK,
+            timestamp: 0
+        }
+    },
+    computed: {
+        title: function () {
+            return this.pomodoroState === POMODORO_STATES.WORK ? 'Work!' :
+                'Rest!'
+        },
+        min: function () {
+            if (this.minute < 10) {
+                return '0' + this.minute;
+            }
+            return this.minute;
+        },
+        sec: function () {
+            if (this.second < 10) {
+                return '0' + this.second;
+            }
+            return this.second;
+        }
+    },
+    methods: {
+        start: function() {
+            this.state = STATES.STARTED;
+            this._tick();
+            this.interval = setInterval(this._tick, 1000);
+        },
+        pause: function () {
+            this.state = STATES.PAUSED;
+            clearInterval(this.interval);
+        },
+        stop: function () {
+            this.state = STATES.STOPPED;
+            clearInterval(this.interval);
+            this.pomodoroState = POMODORO_STATES.WORK;
+            this.minute = WORKING_TIME_LENGTH_IN_MINUTES;
+            this.second = 0;
+        },
+        _tick: function() {
+// Je?eli warto?? second jest wi?ksza od 0, zmniejsz j? o 1.
+            if (this.second !== 0) {
+                this.second--;
+                return;
+            }
+// Je?eli second ma warto?? 0, a minute nie,
+// zmniejsz minute o 1 i nadaj second warto?? 59.
+            if (this.minute !== 0) {
+                this.minute--;
+                this.second = 59;
+                return;
+            }
+// Je?eli second i minute s? równe 0,
+// prze??cz mi?dzy czasem pracy a odpoczynkiem.
+            this.pomodoroState = this.pomodoroState ===
+            POMODORO_STATES.WORK ? POMODORO_STATES.REST :
+                POMODORO_STATES.WORK;
+            if (this.pomodoroState === POMODORO_STATES.WORK) {
+                this.minute = WORKING_TIME_LENGTH_IN_MINUTES;
+            } else {
+                this.minute = RESTING_TIME_LENGTH_IN_MINUTES;
+            }
+        }
+    },
+    template: `
+<div id="app" class="container">
+    <h2>
+        <span>Pomodoro</span>
+        <button :disabled="state==='started'" @click="start()">
+            <i class="glyphicon glyphicon-play">Start</i>
+        </button>
+        <button :disabled="state!=='started'" @click="pause()">
+            <i class="glyphicon glyphicon-pause">Pause</i>
+        </button>
+        <button :disabled="state!=='started' && state !== 'paused'" @click="stop()">
+            <i class="glyphicon glyphicon-stop">Stop</i>
+        </button>
+    </h2>
+    <h3>{{ title }}</h3>
+    <div class="well">
+        <div class="pomodoro-timer">
+            <span>{{ min }}</span>:<span>{{ sec }}</span>
+        </div>
+    </div>
+</div>
+    `
+};
+
+module.exports = Pomodoro;

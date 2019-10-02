@@ -1,0 +1,341 @@
+https://www.udemy.com/course/vue-2-crash-course/learn/lecture/9374922#overview
+
+CDN
+cmd
+
+mkdir vue-cdn && cd vue-cdn
+
+code .
+//run code
+
+
+project w ms code
+
+index.html
+
+emmet - :html5
+
+na końcu html przed body
+<div id="app">
+	{{message}}
+</div>
+
+
+<script src= "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data() {
+			message: "Hello"
+		}
+})
+
+</script>
+====================
+vue-devtools
+
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+https://coursetro.com/posts/code/133/How-to-Install-Vue-2---Through-CDN-NPM-and-the-Vue-CLI
+
+https://coursetro.com/posts/code/133/How-to-Install-Vue-2---Through-CDN-NPM-and-the-Vue-CLI
+
+
+https://www.youtube.com/watch?v=78tNYZUS-ps
+https://github.com/designcourse/vue2-tutorial
+
+
+https://www.smashingmagazine.com/2019/07/using-slots-vue-js/
+
+
+Here is a "table of contents" with timestamps for each section:
+
+1.  Installing Vue:
+https://youtu.be/78tNYZUS-ps?t=129
+
+2. Vue Components:
+https://youtu.be/78tNYZUS-ps?t=635
+
+3. Templating:
+https://youtu.be/78tNYZUS-ps?t=924
+
+4. Styling:
+https://youtu.be/78tNYZUS-ps?t=1529
+
+5. Forms:
+https://youtu.be/78tNYZUS-ps?t=2250
+
+6. Animation:
+https://youtu.be/78tNYZUS-ps?t=2864
+
+7. Routing:
+https://youtu.be/78tNYZUS-ps?t=3318
+c:
+Course Description:
+
+
+
+vue create vue-skills
+
+
+npm start
+
+C:\SzwanSlawomir\Projekty\vue\01>c:\xampp\php\php -help
+
+C:\SzwanSlawomir\Projekty\vue\01>c:\xampp\php\php -S 127.0.0.1:8888
+
+
+var vm = new Vue {...}
+
+vm.$data
+vm.$el
+vm.$watch('a',function(newVal, oldVal)
+
+this to vm
+!!!!!!!!!!!!!!
+
+data:
+data() { return {} }
+
+created: function() {}
+mounted: function() {}
+updated: function() {}
+destroyed: function() {}
+
+>hooks
+-----------------------------
+https://vuejs.org/v2/guide/instance.html
+
+(new Vue())
+beforeCreate
+created
+
+beforeMount
+mounted
+
+beforeUpdate
+updated
+
+beforeDestroy
+destroyed
+
+
+
+vm.$mount(el)
+vm.$el
+vm.$destroy()
+
+-----
+Instance properties
+-------------------
+vm.$data
+vm.$props
+vm.$el
+vm.$options
+vm.$parent
+vm.$root
+vm.$children
+vm.$slots
+vm.$scopedSlots
+vm.$refs   (ref atributes)
+vm.$isServer
+vm.$attrs (bindowane atrybuty poza class i style)
+vm.$listeners
+
+Instance Methods/Data
+---------------
+vm.$watch
+vm.$set
+vm.$delete
+
+
+Instance Methods/Events
+----------------------
+vm.$on
+vm.$once
+vm.$off
+vm.$emit
+
+
+
+Instance Methods/Lifecykle
+--------------------------
+vm.$mount
+vm.$forceUpdate
+vm.$nextTick
+vm.$destroy
+
+
+Directives
+-----------
+v-text
+v-html
+v-show
+v-if
+v-else
+v-else-if
+v-for
+v-on  (.stop .prevent .capture .self .native .once .left .right .middle .passive)
+
+v-bind (.prop .camel .sync)
+v-model  (imput select texarea, komponenty /// .lazy .number .trim)
+v-slot
+v-pre
+v-cloak
+v-once
+
+
+
+Special Attributes
+------------------------
+#key  (v-for)
+#ref  ($refs)
+
+#is  (dynamiczne komponenty)
+
+
+Built-In Components
+-------------------
+#component
+#transition
+#transition-group
+#keep-alive
+#slot
+
+
+https://flaviocopes.com/vue-cheat-sheet/#lifecycle-hooks
+
+
+
+https://jsfiddle.net/chrisvfritz/50wL7mdz/
+https://codesandbox.io/
+
+https://www.google.com/search?client=firefox-b-d&q=vue+form+submit+prevent
+
+v-on:submit.prevent="onSubmit"
+
+===================================================================
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <form v-on:submit.prevent="onSubmit">
+    <input type="text" v-model="message">
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <li v-for="(item,index) in list">{{ index+1 }}) {{ item }} <button @click="onDelete(index)">Delete</button></li>
+  </ul>
+</div>
+
+=====================================================================
+new Vue({
+  el: '#app',
+  data() {
+  	return {
+    	message: 'Hello Vue.js!',
+      list: []
+    };
+  },
+  methods: {
+  	onSubmit() {
+    	//alert(1);
+      this.list.push(this.message);
+      this.message = "";
+    },
+    onDelete(index) {
+    	this.list.splice(index,1);
+    }
+  }
+})
+========================================================================
+
+https://github.com/
+
+=========================================================================
+Adding an existing project to GitHub using the command line
+https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line
+
+nie dodawać wrażliwych danych
+(hasła konta , ssh keys, api keys, nuery kart kredytowych, PINs, AWS keys
+
+
+1)nowe repo w github (aby nie było błedów bez dodawania licencji gitignore oraz README.md)
+utworzyć (nazwa i opis)
+2)open gitbash
+3)zmien folder na folder projektu !!!
+4-0) przed git init usunąć folder .git (jeśli poprzednio był)
+4)git init
+w lokal repo
+4a) dodać  .gitignore aby nie dodawać niepotrzebnych plików do repo
+!!!!!!
+
+5) dodać pliki do tego repo
+git add .
+6) commituj
+git commit -m "First commit"
+7)z github skopiuj adres remote repo  https://github.com/....
+8) w cmd dodaj url remote repo gdzie pushować
+git remote add origin #remote_repo_url#
+#ustawia adres
+git remote -v
+#weryfikacja
+
+9)push zmiany z local do remote repo
+git push origin master
+
+[
+echo "# Projekt" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/..../...git
+git push -u origin master
+
+lub push existing repo
+git remote add origin https://github.com/..../...git
+git push -u origin master
+]
+
+[
+rd .git /S/Q
+usuwamy repo
+git init
+git add .
+git commit -m "initial first commit"
+git remote add origin https://///
+git push -u origin master
+]
+
+https://www.atlassian.com/de/git/tutorials/syncing/git-push
+https://git-scm.com/docs/git-push/1.6.1.3?origin_team=T028VCV1U
+https://poznajgita.pl/bezpieczne-nadpisywanie-zmian-git-push-force-with-lease/
+
+
+https://help.github.com/en/articles/removing-sensitive-data-from-a-repository
+
+
+=====================================
+C:\SzwanSlawomir\Projekty\vue\01>git init
+Initialized empty Git repository in C:/SzwanSlawomir/Projekty/vue/01/.git/
+
+C:\SzwanSlawomir\Projekty\vue\01>git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        !info/
+        .gitignore
+        Display.js
+        Pomodoro.js
+        README.md
+        app3.js
+        image/
+        index.css
+        index.html
+        index.js
+
+nothing added to commit but untracked files present (use "git add" to track)
+
